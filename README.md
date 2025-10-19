@@ -23,7 +23,7 @@ conda activate RandomizedNystromPre
 
 The repository contains two main folders for experiments:
 
-**1. `lplq` folder – Impulsive-noise (ℓp–ℓq) reconstruction demos**  
+**1. `lplq` folder – Impulsive-noise (lp–lq) reconstruction demos**  
 - `DemoLpLqRecoTV.py`: demo for total variation (TV) regularization  
 - `DemoLpLqRecoTVSketchSize.py`: demo to study the effect of sketch size  
 - `OptAlgLpLq.py`: contains the optimization algorithm implementations  
