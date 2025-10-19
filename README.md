@@ -1,10 +1,97 @@
-# Preconditioner-inverse problems.
+# PyTorch Implementation of Randomized Nyström Preconditioners
 
-[Tao Hong](https://hongtao-argmin.github.io), Zhaoyi Xu, Jason Hu, and [Jeffrey A. Fessler](https://web.eecs.umich.edu/~fessler/), ``[Using Randomized Nyström Preconditioners to Accelerate Variational Image Reconstruction](https://arxiv.org/abs/2411.08178)'', To appear in IEEE Transactions on Computational Imagingar, Xiv:2411.08178, 2025.
+**Reference**  
+[Tao Hong](https://hongtao-argmin.github.io), Zhaoyi Xu, Jason Hu, and [Jeffrey A. Fessler](https://web.eecs.umich.edu/~fessler/), “Using Randomized Nyström Preconditioners to Accelerate Variational Image Reconstruction,” *to appear in* **IEEE Transactions on Computational Imaging**, arXiv:2411.08178 (2025).  
+Preprint: [https://arxiv.org/abs/2411.08178](https://arxiv.org/abs/2411.08178)
 
-Code is brewing in the lab — stay tuned! Feel free to shoot me an email (tao.hong@austin.utexas.edu) if you would like to learn more about our work.
+---
+
+## Getting Started
+
+### 1) Installation
+
+Create a conda environment using the provided YAML file:
+
+```bash
+conda env create -f RandomizedNystromPre.yml
+conda activate RandomizedNystromPre
+```
+
+---
+
+### 2) Repository Structure & Demos
+
+The repository contains two main folders for experiments:
+
+**1. `lplq` folder – Impulsive-noise (ℓp–ℓq) reconstruction demos**  
+- `DemoLpLqRecoTV.py`: demo for total variation (TV) regularization  
+- `DemoLpLqRecoTVSketchSize.py`: demo to study the effect of sketch size  
+- `OptAlgLpLq.py`: contains the optimization algorithm implementations  
+- `utilities.py`: support and helper functions  
+
+**2. `CT` folder – Computed tomography (CT) reconstruction demos**  
+- `Demo2DCTl2RecoTV.py`, `Demo2DCTl2RecoWav.py`, `Demo2DCTl2RecoHS.py`: demos for TV, wavelet, and Hessian–Schatten regularizers  
+- `CTutilities.py`, `utilities.py`, `utilitiesHS.py`: helper functions for CT reconstruction  
+- `operatorTorch` folder and `operator2.py`: operators implementing different CT geometries (using the [ODL library](https://github.com/odlgroup/odl))  
+- **Data:** Download the test dataset from [Google Drive](https://drive.google.com/drive/folders/1R9v5JrJFt7lZEoJ4DYPFNNXZwbEDo1fn?usp=sharing) and place it in the same `CT/` folder.  
+
+---
+
+### 3) Quick Run
+
+```bash
+# lp-lq TV demo
+python3 lplq/DemoLpLqRecoTV.py
+
+# Sketch-size study
+python3 lplq/DemoLpLqRecoTVSketchSize.py
+
+# CT demos (TV / Wavelet / Hessian–Schatten)
+python3 CT/Demo2DCTl2RecoTV.py
+python3 CT/Demo2DCTl2RecoWav.py
+python3 CT/Demo2DCTl2RecoHS.py
+```
+
+---
+
+## Key Insights from the Paper
+
+1. **On-the-fly Preconditioning**  
+   Build an effective randomized Nyström preconditioner using only matrix–vector products \(A x\), without requiring explicit knowledge or structure of \(A\).
+
+2. **Acceleration for Variational Image Reconstruction**  
+   Use the preconditioner to significantly accelerate iterative solvers with TV, wavelet, or Hessian–Schatten priors.
+   
+---
+
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@article{hong2025nystrom-precond,
+  title   = {Using Randomized Nyström Preconditioners to Accelerate Variational Image Reconstruction},
+  author  = {Hong, Tao and Xu, Zhaoyi and Hu, Jason and Fessler, Jeffrey A.},
+  journal = {IEEE Transactions on Computational Imaging},
+  year    = {2025},
+  note    = {to appear},
+  eprint  = {2411.08178},
+  archivePrefix = {arXiv},
+  primaryClass  = {eess.IV}
+}
+```
+
+---
+
+## Contact
+
+If you encounter bugs or have questions, feel free to reach out:  
+- **tao.hong@austin.utexas.edu**  
+- **zhaoyix@umich.edu**
+
+If you are interested in discussing our work further, feel free to reach out as well. 
+
+---
 
 
 
-
-https://drive.google.com/drive/folders/1R9v5JrJFt7lZEoJ4DYPFNNXZwbEDo1fn?usp=sharing
