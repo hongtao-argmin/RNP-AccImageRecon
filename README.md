@@ -81,7 +81,7 @@ P_inv = lambda x: CTutl.P_invx_SimpReal(x, U_temp, im_size)
 ## Key Insights from the Paper
 
 1. **On-the-fly Preconditioning**  
-   Build an effective randomized Nyström preconditioner using only matrix–vector products \(A x\), without requiring explicit knowledge or structure of \(A\).
+   Build an effective randomized Nyström preconditioner using only matrix–vector products Ax (A represents the forward model), without requiring explicit knowledge or structure of A.
 
 2. **Acceleration for Variational Image Reconstruction**  
    Use the preconditioner to significantly accelerate iterative solvers with TV, wavelet, or Hessian–Schatten priors.
