@@ -69,6 +69,8 @@ Below is a minimal PyTorch example showing how to build and apply the Nyström p
 # im_size / im_size_prod: image size and total number of elements
 # sketch_size: sketch size for randomized Nyström approximation
 
+import CTutilities as CTutl
+
 U, S, lambda_l = CTutl.Build_Sketch_Real_Pred(
     Ax, ATx, im_size, im_size_prod, sketch_size, isBatch=True, device=device
 )
