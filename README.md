@@ -75,9 +75,8 @@ P_inv = lambda x: CTutl.P_invx_SimpReal(x, U_temp, im_size)
 
 # Now P_inv(x) can be used inside iterative solvers, e.g.:
 # x_{k+1} = x_k + step_size * P_inv(r_k)
+```
 
-
----
 
 ## Key Insights from the Paper
 
