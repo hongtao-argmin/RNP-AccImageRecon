@@ -56,6 +56,8 @@ python3 CT/Demo2DCTl2RecoHS.py
 
 ## Example: Building the Nyström Preconditioner
 
+<img src="SchemeImage.png" alt="Working pipline" width="50%"/>
+
 Below is a minimal PyTorch example showing how to build and apply the Nyström preconditioner in the CT reconstruction setting.
 
 ```python
