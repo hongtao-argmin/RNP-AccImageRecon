@@ -1,7 +1,7 @@
 # PyTorch Implementation of Randomized Nyström Preconditioners
 
 **Reference**  
-[Tao Hong](https://hongtao-argmin.github.io), Zhaoyi Xu, Jason Hu, and [Jeffrey A. Fessler](https://web.eecs.umich.edu/~fessler/), “Using Randomized Nyström Preconditioners to Accelerate Variational Image Reconstruction,” *to appear in* **IEEE Transactions on Computational Imaging**, arXiv:2411.08178 (2025).  
+[Tao Hong](https://hongtao-argmin.github.io), Zhaoyi Xu, Jason Hu, and [Jeffrey A. Fessler](https://web.eecs.umich.edu/~fessler/), “Using Randomized Nyström Preconditioners to Accelerate Variational Image Reconstruction,” *to appear in* **IEEE Transactions on Computational Imaging**, 2025.  
 Preprint: [https://arxiv.org/abs/2411.08178](https://arxiv.org/abs/2411.08178)
 
 ---
@@ -51,6 +51,31 @@ python3 CT/Demo2DCTl2RecoTV.py
 python3 CT/Demo2DCTl2RecoWav.py
 python3 CT/Demo2DCTl2RecoHS.py
 ```
+
+---
+
+## Example: Building the Nyström Preconditioner
+
+Below is a minimal PyTorch example showing how to build and apply the Nyström preconditioner in the CT reconstruction setting.
+
+```python
+# Ax, ATx: forward model and its adjoint
+# im_size / im_size_prod: image size and total number of elements
+# sketch_size: sketch size for randomized Nyström approximation
+
+U, S, lambda_l = CTutl.Build_Sketch_Real_Pred(
+    Ax, ATx, im_size, im_size_prod, sketch_size, isBatch=True, device=device
+)
+
+# Build the preconditioner
+U_temp = U * torch.sqrt(1 - (lambda_l + mu) / (S + mu))
+
+# Define the preconditioner operator
+P_inv = lambda x: CTutl.P_invx_SimpReal(x, U_temp, im_size)
+
+# Now P_inv(x) can be used inside iterative solvers, e.g.:
+# x_{k+1} = x_k + step_size * P_inv(r_k)
+
 
 ---
 
