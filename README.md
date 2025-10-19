@@ -57,7 +57,7 @@ python3 CT/Demo2DCTl2RecoHS.py
 ## Example: Building the Nyström Preconditioner
 
 <p align="center">
- <img src="SchemeImage.png" alt="Working pipline" width="80%"/>
+ <img src="SchemeImage.png" alt="Working pipline" width="110%"/>
 </p>
 
 
