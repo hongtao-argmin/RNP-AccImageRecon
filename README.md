@@ -68,6 +68,7 @@ Below is a minimal PyTorch example showing how to build and apply the Nyström p
 # Ax, ATx: forward model and its adjoint
 # im_size / im_size_prod: image size and total number of elements
 # sketch_size: sketch size for randomized Nyström approximation
+# mu: a small regularized parameter, e.g., 1e-6
 
 import CTutilities as CTutl
 
